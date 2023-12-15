@@ -63,8 +63,6 @@ const Page = ({ params: { id } }: Props) => {
     setNum(undefined);
   };
 
-  const remark = remarkList[remarkList.length - 1];
-
   return (
     <>
       <main className="flex flex-col sm:px-20 md:px-48 lg:px-64 xl:px-[25rem] min-h-screen items-center justify-center w-full px-2 text-center">
@@ -78,11 +76,11 @@ const Page = ({ params: { id } }: Props) => {
             </h1>
           </div>
           <div className="mt-6">
-            <form onSubmit={handleSubmit} className={`${!gamePlay ? "hidden" : "block"} flex flex-col flex-wrap justify-center items-center gap-8 sm:gap-10`}>
+            <form onSubmit={handleSubmit} className={`${!gamePlay ? "hidden" : "block"} flex  justify-center items-center gap-8 sm:gap-10`}>
               <input
                 name="number"
                 inputMode="numeric"
-                className={`border-2 rounded-md font-semibold p-2 outline-none ${level === "easy" ? "bg-green-300 border-green-500 focus:border-green-600" : level === "medium" ? "bg-yellow-200 border-yellow-500 focus:border-yellow-600" : "bg-red-300 border-red-500 focus:border-red-600"}`}
+                className={`border-2 w-48 rounded-md font-semibold p-2 px-4 outline-none ${level === "easy" ? "bg-green-300 border-green-500 focus:border-green-600" : level === "medium" ? "bg-yellow-200 border-yellow-500 focus:border-yellow-600" : "bg-red-300 border-red-500 focus:border-red-600"}`}
                 value={num || ""}
                 onChange={handleChange}
                 required
@@ -97,10 +95,12 @@ const Page = ({ params: { id } }: Props) => {
             </form>
             {gamePlay ? (
               <div className="text-left mt-10 px-6 md:px-12 text-stone-200">
-                <p className="text-lg text-gray-400 mb-1">Guesses Available : <span className={`${level === "easy" ? "text-green-300" : level === "medium" ? "text-yellow-300" : "text-red-300"}`}>{guessTotal - guessesTaken} </span></p>
-                <p className="text-lg text-gray-400 mb-1">Used : <span className={`${level === "easy" ? "text-green-300" : level === "medium" ? "text-yellow-300" : "text-red-300"}`}>{guessList.join(", ")} </span></p>
-                <p className="text-lg text-gray-400 mb-1">Remarks:</p>
-                <p className={`text-lg mb-1 ${level === "easy" ? "text-green-300" : level === "medium" ? "text-yellow-300" : "text-red-300"}`}>{remark}</p>
+                <p className="text-base text-gray-400 mb-1">Guesses Available : <span className={`${level === "easy" ? "text-green-300" : level === "medium" ? "text-yellow-300" : "text-red-300"}`}>{guessTotal - guessesTaken} </span></p>
+                <p className="text-base text-gray-400 mb-1">Used : <span className={`${level === "easy" ? "text-green-300" : level === "medium" ? "text-yellow-300" : "text-red-300"}`}>{guessList.join(", ")} </span></p>
+                <p className="text-base text-gray-400 mb-1">Remarks:</p>
+                {remarkList.map((remark, index) => (
+                  <p className={`text-base mb-0 ${level === "easy" ? "text-green-300" : level === "medium" ? "text-yellow-300" : "text-red-300"}`}>{remark}</p>
+                ))}
               </div>
             ) : (
               <>
