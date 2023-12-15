@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+  background: linear-gradient(200deg, #316D88 2%, #133F5A 7.5%, #121837 17%, #100E26 28%);
+  min-height: 100vh;
+}
+
+.maindiv{
+  box-shadow: 0 0px 500px 0 rgba(91, 102, 255, 0.15);
+  backdrop-filter: blur( 10.5px );
+  -webkit-backdrop-filter: blur( 40px );
+  border-radius: 20px;
+}
