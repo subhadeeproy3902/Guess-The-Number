@@ -99,7 +99,7 @@ const Page = ({ params: { id } }: Props) => {
                 <p className="text-base text-gray-400 mb-1">Used : <span className={`${level === "easy" ? "text-green-300" : level === "medium" ? "text-yellow-300" : "text-red-300"}`}>{guessList.join(", ")} </span></p>
                 <p className="text-base text-gray-400 mb-1">Remarks:</p>
                 {remarkList.map((remark, index) => (
-                  <p className={`text-base mb-0 ${level === "easy" ? "text-green-300" : level === "medium" ? "text-yellow-300" : "text-red-300"}`}>{remark}</p>
+                  <p key={index} className={`text-base mb-0 ${level === "easy" ? "text-green-300" : level === "medium" ? "text-yellow-300" : "text-red-300"}`}>{remark}</p>
                 ))}
               </div>
             ) : (
